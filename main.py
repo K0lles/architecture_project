@@ -1,6 +1,3 @@
-import socket
-from threading import Thread
-
 from server.server_architecture import *
 
 
@@ -15,7 +12,9 @@ if __name__ == '__main__':
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print(f'Web server was stopped.')
         server.shutdown()
+        print(f'Web server was stopped.')
     except Exception as e:
         server.shutdown()
+
+    server.shutdown()

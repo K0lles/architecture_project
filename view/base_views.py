@@ -1,5 +1,7 @@
 import json
 
+from validators.validators import ReceiptValidator
+
 
 class HttpResponseNotAllowed:
     def __init__(self, allowed_methods):
@@ -34,3 +36,10 @@ class View:
         allowed_methods = [m.upper() for m in self.http_method_names if hasattr(self, m)]
         response = HttpResponseNotAllowed(allowed_methods)
         return response
+
+
+class ReceiptView(View):
+
+    def get(self):
+        dct = json.dumps(self.request['body'].dict()).encode('utf-8')
+        return dct

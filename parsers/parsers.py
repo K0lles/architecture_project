@@ -1,6 +1,6 @@
 import json
 
-from urllib.parse import parse_qs
+from datetime import datetime
 
 
 class BaseRequestParser:
@@ -17,6 +17,8 @@ class BaseRequestParser:
 
         # Parse the method, path, and version from the first line of the headers
         method, path, version = header_list[0].split()
+
+        print(f'{datetime.now().strftime("%H:%M")} - {method}: {path}: {body}')
 
         # Parse the headers into a dictionary
         headers_dict = {}

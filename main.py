@@ -1,8 +1,12 @@
+import socketserver
+
 from server.server_architecture import *
 
 
 if __name__ == '__main__':
     HOST, PORT = 'localhost', 8080
+
+    socketserver.TCPServer.allow_reuse_address = True
 
     server = ThreadedTCPServer((HOST, PORT), WebServer)
 
